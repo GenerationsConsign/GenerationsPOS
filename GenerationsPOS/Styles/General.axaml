@@ -1,0 +1,38 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+  <!-- https://github.com/AvaloniaUI/Avalonia/issues/3016#issuecomment-799349256 -->
+  <!--Use Classes="RadioButtonListBox" in any ListBox to represent its items as RadioButtons-->
+  <Style Selector="ListBox.RadioButtonListBox">
+    <Setter Property="BorderBrush" Value="Transparent"/>
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+  <Style Selector="ListBox.RadioButtonListBox ListBoxItem">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="Transparent">
+            <RadioButton Content="{TemplateBinding ContentPresenter.Content}"
+                         Margin="3,3"
+                         VerticalAlignment="Center"
+                         IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style Selector="Run.alert">
+    <Setter Property="Foreground" Value="Red" />
+  </Style>
+
+  <Style Selector="Button.danger">
+    <Setter Property="Background" Value="#ff9c63" />
+  </Style>
+
+</Styles>

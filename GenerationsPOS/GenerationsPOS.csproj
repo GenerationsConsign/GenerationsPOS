@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <None Remove="Assets\treelogo.png" />
+    <None Remove="NLog.config" />
+    <None Remove="Storage.json" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <Content Include="Storage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="DebounceThrottle" Version="2.0.0" />
+    <PackageReference Include="ESCPOS_NET" Version="3.0.0" />
+    <PackageReference Include="Interop.QBFC16" Version="16.0.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0-rc.2.23479.6" />
+    <PackageReference Include="NLog" Version="5.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\InvoiceLineItemView.axaml.cs">
+      <DependentUpon>InvoiceLineItemView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CustomerInvoiceView.axaml.cs">
+      <DependentUpon>CustomerInvoiceView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CompanySettingsView.axaml.cs">
+      <DependentUpon>CompanySettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\GenerateConsignorView.axaml.cs">
+      <DependentUpon>GenerateConsignorView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\GenerateSalesView.axaml.cs">
+      <DependentUpon>GenerateSalesView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NotifyDrawerOpenedWindow.axaml.cs">
+      <DependentUpon>NotifyDrawerOpenedWindow.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StatusPane\OpenPaneView.axaml.cs">
+      <DependentUpon>OpenPaneView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StatusPane\CollapsedPaneView.axaml.cs">
+      <DependentUpon>CollapsedPaneView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StatusPane\StatusPaneView.axaml.cs">
+      <DependentUpon>StatusPaneView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WelcomeView.axaml.cs">
+      <DependentUpon>WelcomeView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ActiveInvoiceView.axaml.cs">
+      <DependentUpon>ActiveInvoiceView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

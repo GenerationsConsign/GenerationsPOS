@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
+             xmlns:spvm="clr-namespace:GenerationsPOS.ViewModels.StatusPane"
+             x:Class="GenerationsPOS.Views.StatusPane.OpenPaneView"
+             x:DataType="spvm:OpenPaneViewModel">
+
+  <StackPanel Width="{Binding StatusPane.ExpandedWidth}">
+
+    <Panel>
+      
+      <Button HorizontalAlignment="Right"
+              VerticalAlignment="Center"
+              Margin="0,0,6,0"
+              Width="34"
+              Height="34"
+              Command="{Binding StatusPane.CloseNotificationPane}">
+        <PathIcon Data="{StaticResource caret_right_regular}"
+                  Height="12"
+                  Width="12" />
+        
+      </Button>
+
+      <TextBlock HorizontalAlignment="Center"
+           FontSize="20"
+           Margin="0,12">System Information</TextBlock>
+      
+    </Panel>
+    
+    <Separator />
+
+    <StackPanel HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="6,6"
+                MinHeight="250"
+                Width="{Binding StatusPane.ExpandedWidth}">
+
+      <TextBlock FontSize="16"
+                 HorizontalAlignment="Center"
+                 Margin="0,12">Status Metrics</TextBlock>
+
+      <Panel>
+        <ItemsControl ItemsSource="{Binding Status.SystemMetrics}">
+          
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+
+              <TextBlock Margin="6,6">
+                <Run Text="{Binding Name}"/>
+                <Run Text=": " />
+                <Run Text="{Binding Status}" 
+                     Classes.alert="{Binding IsIssue}" />
+              </TextBlock>
+            
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Panel>
+      
+    </StackPanel>
+    
+    <Separator />
+
+    <StackPanel HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="6,6"
+                Width="{Binding StatusPane.ExpandedWidth}"
+                Height="300">
+
+      <TextBlock FontSize="16"
+                 HorizontalAlignment="Center"
+                 Margin="0,12">System Messages</TextBlock>
+
+      <ListBox ItemsSource="{Binding Status.SystemMessages}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding}"
+                       TextWrapping="Wrap" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      
+    </StackPanel>
+    
+  </StackPanel>
+  
+</UserControl>

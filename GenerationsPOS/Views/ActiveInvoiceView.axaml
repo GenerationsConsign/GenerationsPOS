@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:GenerationsPOS.ViewModels"
+             x:Class="GenerationsPOS.Views.ActiveInvoiceView"
+             x:DataType="vm:ActiveInvoiceViewModel">
+
+  <Grid RowDefinitions="64, *" Margin="12,12,0,0">
+
+    <StackPanel Orientation="Horizontal"
+                Grid.Row="0">
+      <Button Margin="12"
+              Classes="accent"
+              Command="{Binding CreateNewInvoice}">
+        <StackPanel Orientation="Horizontal">
+          <PathIcon Data="{StaticResource table_add_regular}"
+                    Margin="0,0,6,0" />
+          <TextBlock>Create New Invoice</TextBlock>
+        </StackPanel>
+      </Button>
+
+      <Button Margin="12">
+        <StackPanel Orientation="Horizontal">
+          <PathIcon Data="{StaticResource table_edit_regular}" 
+                    Margin="0,0,6,0"/>
+          <TextBlock>Open Existing Invoice</TextBlock>
+        </StackPanel>
+      </Button>
+    </StackPanel>
+
+    <TabControl ItemsSource="{Binding InvoiceViewModels}"
+                SelectedIndex="{Binding SelectedInvoiceIndex}"
+                Grid.Row="1">
+      <TabControl.ItemTemplate>
+        <DataTemplate>
+          
+          <TabItem Header="{Binding Invoice.InvoiceName}">
+            <ContentControl Content="{Binding}" />
+          </TabItem>
+
+        </DataTemplate>
+      </TabControl.ItemTemplate>
+    </TabControl>
+
+  </Grid>
+  
+</UserControl>

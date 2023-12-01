@@ -1,0 +1,149 @@
+  <UserControl xmlns="https://github.com/avaloniaui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="1024"
+               xmlns:vm="clr-namespace:GenerationsPOS.ViewModels"
+               x:Class="GenerationsPOS.Views.CompanySettingsView"
+               x:DataType="vm:CompanySettingsViewModel">
+
+    <Grid RowDefinitions="64, *"
+          Margin="12">
+    
+      <!-- Save, Discard changes buttons -->
+      <StackPanel Orientation="Horizontal"
+                  Grid.Row="0"
+                  HorizontalAlignment="Right"
+                  Spacing="12">
+        
+        <Button Command="{Binding CloseSettings}">
+          <StackPanel Orientation="Horizontal"
+                      Spacing="6">
+            <PathIcon Data="{StaticResource delete_regular}" />
+            <TextBlock>Close, Discard Changes</TextBlock>
+          </StackPanel>
+        </Button>
+
+        <Button Command="{Binding SaveSettings}"
+                Classes="accent">
+          <StackPanel Orientation="Horizontal"
+                      Spacing="6">
+            <PathIcon Data="{StaticResource save_regular}" />
+            <TextBlock>Save Settings</TextBlock>
+          </StackPanel>
+        </Button>
+      
+      </StackPanel>
+
+      <!-- Company Settings Columns -->
+      <Grid ColumnDefinitions="*, *, *, *"
+            Grid.Row="1">
+
+        <StackPanel Grid.Column="0"
+                    Spacing="12">
+
+          <TextBlock HorizontalAlignment="Center">Receipt Information</TextBlock>
+          <Separator />
+
+          <StackPanel Width="288"
+                      Spacing="12">
+
+            <TextBlock>Company Configuration</TextBlock>
+            <TextBox IsEnabled="False"
+                     Text="{Binding Name}" />
+
+            <TextBlock>Full Company Name</TextBlock>
+            <TextBox Text="{Binding CompanyFullName}" />
+
+            <TextBlock>Receipt Header</TextBlock>
+            <TextBox AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     Text="{Binding ReceiptHeader}" />
+
+            <TextBlock>Receipt Footer</TextBlock>
+            <TextBox AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     Text="{Binding ReceiptFooter}" />
+
+            <TextBlock>Receipt Logo File Name</TextBlock>
+            <TextBox Text="{Binding CompanyLogo}" />
+
+            <TextBlock>Printer Communcation Port</TextBlock>
+            <ComboBox ItemsSource="{Binding PortOptions}" 
+                      SelectedIndex="{Binding SelectedPortIndex}" />
+
+            <Button Margin="0,6,0,0"
+                    Command="{Binding ReconnectPrinterCommand}">Manual Printer Reconnection</Button>
+
+            <Button Margin="0,6,0,0"
+                    Command="{Binding TestPrintCommand}">Receipt Test Print</Button>
+
+          </StackPanel>
+          
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"
+                    Spacing="12">
+
+          <TextBlock HorizontalAlignment="Center">QuickBooks Name Matching</TextBlock>
+          <Separator />
+
+          <StackPanel Width="288"
+                      Spacing="12">
+
+            <TextBlock>Default Customer Job</TextBlock>
+            <TextBox Text="{Binding CustomerJob}" />
+
+            <TextBlock>Cash Payment Type</TextBlock>
+            <TextBox Text="{Binding CashPayment}" />
+
+            <TextBlock>Check Payment Type</TextBlock>
+            <TextBox Text="{Binding CheckPayment}" />
+
+            <TextBlock>Card Payment Type</TextBlock>
+            <TextBox Text="{Binding CardPayment}" />
+
+            <TextBlock>Consignor Credit Payment Type</TextBlock>
+            <TextBox Text="{Binding ConsCredit}" />
+            
+            <TextBlock>Purchase COGS Account</TextBlock>
+            <TextBox Text="{Binding PurchasesAccount}" />
+            
+            <TextBlock>Inventory Asset Account</TextBlock>
+            <TextBox Text="{Binding AssetAccount}" />
+
+            <Button Margin="0,6,0,0"
+                    Command="{Binding ReconnectQuickBooksCommand}">QuickBooks Application Reconnection</Button>
+
+            <Button Margin="0,6,0,0"
+                    Command="{Binding DisconnectQuickBooksCommand}"
+                    >Disconnect from QuickBooks</Button>
+
+            <Button Margin="0,6,0,0"
+                    Command="{Binding ForceCloseQuickBooksCommand}"
+                    Classes="danger"
+                    >Force Close QuickBooks</Button>
+
+          </StackPanel>
+          
+        </StackPanel>
+
+        <StackPanel Grid.Column="2"
+                    Spacing="12">
+
+          <TextBlock HorizontalAlignment="Center">Application Settings</TextBlock>
+
+          <Separator />
+
+          <TextBlock TextWrapping="Wrap">Application Theme (Applies immediately, Use "Save Settings" to set theme as default)</TextBlock>
+          <ToggleSwitch OffContent="Dark"
+                        OnContent="Light"
+                        IsChecked="{Binding LightThemeEnabled}" />
+          
+        </StackPanel>
+        
+      </Grid>
+    
+    </Grid>
+  
+  </UserControl>

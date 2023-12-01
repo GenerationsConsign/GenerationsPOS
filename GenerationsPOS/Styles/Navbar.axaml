@@ -1,0 +1,32 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+  <Style Selector="DockPanel.nav">
+    
+    <Style Selector="^ Button">
+      <Setter Property="Margin" Value="5,10" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="Width" Value="100" />
+
+      <Style Selector="^ PathIcon">
+        <Setter Property="Margin" Value="0,10,0,0" />
+      </Style>
+
+      <Style Selector="^ TextBlock">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        
+      </Style>
+      
+    </Style>
+    
+  </Style>
+  
+</Styles>

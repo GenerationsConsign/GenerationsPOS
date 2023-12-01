@@ -1,0 +1,265 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="800"
+             xmlns:vm="clr-namespace:GenerationsPOS.ViewModels"
+             xmlns:util="using:GenerationsPOS.Utilities"
+             x:Class="GenerationsPOS.Views.CustomerInvoiceView"
+             x:DataType="vm:CustomerInvoiceViewModel">
+
+
+  <Grid RowDefinitions="*, 372">
+
+    <!-- Top portion of invoice panel -->
+    <Grid RowDefinitions="64, 18, 1, *"
+          Margin="12"
+          Grid.Row="0">
+
+      <StackPanel Orientation="Horizontal"
+                  HorizontalAlignment="Right"
+                  Spacing="12"
+                  Margin="0,12"
+                  Grid.Row="0">
+        <!-- Invoice-specific buttons anchored right -->
+
+        <Button Command="{Binding CloseInvoice}">
+          <StackPanel Orientation="Horizontal">
+            <PathIcon Data="{StaticResource delete_forever_regular}"
+                      Margin="0,0,6,0" />
+            <TextBlock>Close Invoice Without Saving</TextBlock>
+          </StackPanel>
+        </Button>
+
+        <Button>
+          <StackPanel Orientation="Horizontal">
+            <PathIcon Data="{StaticResource print_regular}"
+                      Margin="0,0,6,0" />
+            <TextBlock>Print Invoice</TextBlock>
+          </StackPanel>
+        </Button>
+
+        <Button Classes="accent"
+                Command="{Binding SaveInvoiceCommand}">
+          <StackPanel Orientation="Horizontal">
+            <PathIcon Data="{StaticResource save_regular}"
+                      Margin="0,0,6,0" />
+            <TextBlock>Save Invoice to QB</TextBlock>
+          </StackPanel>
+        </Button>
+
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal"
+                  Spacing="12"
+                  Grid.Row="1">
+
+        <!-- Line Item Headers -->
+        <TextBlock Width="108">Consignor ID</TextBlock>
+        <TextBlock Width="396">Item Description</TextBlock>
+        <TextBlock Width="108">Item Price</TextBlock>
+        <TextBlock Width="108">Quantity</TextBlock>
+        <TextBlock Width="228">Item Reductions</TextBlock>
+        <TextBlock Width="192">Final Price</TextBlock>
+        <Panel Width="48" />
+        <!-- Space for delete icon -->
+      </StackPanel>
+
+      <Separator Margin="0,12" 
+                 Grid.Row="2" />
+
+      <!-- Invoice line items -->
+      <ScrollViewer Grid.Row="3"
+                    AllowAutoHide="False">
+        <ItemsControl ItemsSource="{Binding LineItemViewModels}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+
+              <ContentControl Content="{Binding}"
+                              Margin="0,0,0,12" />
+
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+
+    </Grid>
+
+    <!-- Sales Info docked to bottom of invoice containing customer info, payment info-->
+    <Grid ColumnDefinitions="*, *"
+          Grid.Row="1">
+
+      <StackPanel Grid.Column="0"
+                  Spacing="12">
+        <!-- Customer Info Panel -->
+
+        <AutoCompleteBox Watermark="Customer Name"
+                         ItemsSource="{Binding KnownCustomers}"
+                         Text="{Binding Invoice.Customer}"
+                         Width="216"
+                         Height="32"
+                         FilterMode="Contains"
+                         VerticalAlignment="Center" />
+
+        <TextBox Watermark="Notes/Memo"
+                 Text="{Binding Invoice.AdditonalNotes}"
+                 Width="396"
+                 MinHeight="32"
+                 MaxHeight="108"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap" />
+
+        <CheckBox IsChecked="{Binding Invoice.FuturePickup}"
+                  HorizontalAlignment="Center"
+                  Height="32">
+          Item Pickup Required
+        </CheckBox>
+
+        <CheckBox HorizontalAlignment="Center"
+                  IsChecked="{Binding OmitTaxChecked}"
+                  Height="32">Omit Tax</CheckBox>
+
+      </StackPanel>
+
+      <StackPanel Grid.Column="1"
+                  Spacing="12"
+                  HorizontalAlignment="Center">
+        <!-- Payment Panel -->
+
+        <!-- Cash -->
+        <StackPanel Orientation="Horizontal"
+                    Spacing="12">
+          <ToggleButton IsChecked="{Binding CashSelected}">Cash $</ToggleButton>
+          <StackPanel Orientation="Horizontal"
+                      Spacing="12"
+                      IsVisible="{Binding CashSelected}">
+
+            <TextBlock VerticalAlignment="Center"> -> </TextBlock>
+            <NumericUpDown Watermark="Cash $"
+                           Width="108"
+                           Height="32"
+                           Minimum="0"
+                           FormatString="c"
+                           AllowSpin="False"
+                           ShowButtonSpinner="False">
+
+              <Interaction.Behaviors>
+                <util:UDFocusBindingBehavior Value="{Binding CashPayment}" />
+              </Interaction.Behaviors>
+            </NumericUpDown>
+
+          </StackPanel>
+        </StackPanel>
+
+        <!-- Check -->
+        <StackPanel Orientation="Horizontal"
+                    Spacing="12">
+          <ToggleButton IsChecked="{Binding CheckSelected}">Check Recv</ToggleButton>
+          <StackPanel Orientation="Horizontal"
+                      Spacing="12"
+                      IsVisible="{Binding CheckSelected}">
+
+            <TextBlock VerticalAlignment="Center"> -> </TextBlock>
+            <NumericUpDown Watermark="Check Recv"
+                           Width="108"
+                           Height="32"
+                           Minimum="0"
+                           FormatString="c"
+                           AllowSpin="False"
+                           ShowButtonSpinner="False">
+
+              <Interaction.Behaviors>
+                <util:UDFocusBindingBehavior Value="{Binding CheckPayment}" />
+              </Interaction.Behaviors>
+            </NumericUpDown>
+
+          </StackPanel>
+        </StackPanel>
+
+        <!-- Card -->
+        <StackPanel Orientation="Horizontal"
+                    Spacing="12">
+          <ToggleButton IsChecked="{Binding CardSelected}">Card Charged</ToggleButton>
+          <StackPanel Orientation="Horizontal"
+                      Spacing="12"
+                      IsVisible="{Binding CardSelected}">
+
+            <TextBlock VerticalAlignment="Center"> -> </TextBlock>
+            <NumericUpDown Watermark="Charge Amt"
+                           Width="108"
+                           Height="32"
+                           Minimum="0"
+                           FormatString="c"
+                           AllowSpin="False"
+                           ShowButtonSpinner="False">
+
+              <Interaction.Behaviors>
+                <util:UDFocusBindingBehavior Value="{Binding CardPayment}" />
+              </Interaction.Behaviors>
+            </NumericUpDown>
+
+          </StackPanel>
+        </StackPanel>
+
+        <!-- Cash -->
+        <StackPanel Orientation="Horizontal"
+                    Spacing="12">
+          <ToggleButton IsChecked="{Binding ConsCreditSelected}">Consignor Credit Used</ToggleButton>
+          <StackPanel Orientation="Horizontal"
+                      Spacing="12"
+                      IsVisible="{Binding ConsCreditSelected}">
+
+            <TextBlock VerticalAlignment="Center"> -> </TextBlock>
+            <NumericUpDown Watermark="Cons $"
+                           Width="108"
+                           Height="32"
+                           Minimum="0"
+                           FormatString="c"
+                           AllowSpin="False"
+                           ShowButtonSpinner="False">
+
+              <Interaction.Behaviors>
+                <util:UDFocusBindingBehavior Value="{Binding ConsCreditPayment}" />
+              </Interaction.Behaviors>
+            </NumericUpDown>
+
+          </StackPanel>
+        </StackPanel>
+
+        <Separator />
+        <!-- Receipt Totals -->
+        <TextBlock>
+          <Run Text="Subtotal: " />
+          <Run Text="{Binding Invoice.Subtotal, StringFormat=c}" />
+        </TextBlock>
+
+        <TextBlock>
+          <Run Text="Tax Amount (@" />
+          <Run Text="{Binding Invoice.TaxRate, StringFormat=P1}" />
+          <Run Text="): " />
+          <Run Text="{Binding Invoice.TaxAmount, StringFormat=c}" /> 
+        </TextBlock>
+
+        <TextBlock>
+          <Run Text="Grand Total: " />
+          <Run Text="{Binding Invoice.InvoiceTotal, StringFormat=c}" />
+        </TextBlock>
+
+        <TextBlock>
+          <Run Text="Payment Recorded: " />
+          <Run Text="{Binding Invoice.PaymentsReceived, StringFormat=c}" />
+        </TextBlock>
+
+        <TextBlock>
+          <Run Text="Unreconciled Amount: " />
+          <Run Text="{Binding Invoice.PaymentsRequired, StringFormat=c}"
+               Classes.alert="{Binding Invoice.PaymentsRequired} "/>
+        </TextBlock>
+
+      </StackPanel>
+
+    </Grid>
+    
+  </Grid>
+  
+</UserControl>

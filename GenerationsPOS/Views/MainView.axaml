@@ -1,0 +1,85 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GenerationsPOS.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="576"
+             x:Class="GenerationsPOS.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <DockPanel>
+
+    <Border BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="4"
+            BoxShadow="3 3 3 Black">
+      <DockPanel Classes="nav"
+                 DockPanel.Dock="Left"
+                 Width="120">
+
+        <Button Classes="bottom"
+                Command="{Binding OpenCashDrawer}"
+                DockPanel.Dock="Bottom">
+          <StackPanel>
+            <PathIcon Data="{StaticResource text_change_reject_regular}" />
+            <TextBlock Padding="0"
+                       TextWrapping="Wrap">Open Cash Drawer</TextBlock>
+          </StackPanel>
+        </Button>
+
+        <StackPanel Spacing="50">
+          <Button Command="{Binding SalesWindow}"
+                  Classes.accent="{Binding SalesActive}">
+            <StackPanel>
+              <TextBlock>Sales Invoices</TextBlock>
+              <PathIcon Data="{StaticResource home_regular}" />
+            </StackPanel>
+          </Button>
+          <Button Command="{Binding ReportWindow}"
+                  Classes.accent="{Binding ReportsActive}">
+            <StackPanel>
+              <TextBlock>Sales Reports</TextBlock>
+              <PathIcon Data="{StaticResource search_info_regular}" />
+            </StackPanel>
+          </Button>
+          <Button Command="{Binding ConsignorWindow}"
+                  Classes.accent="{Binding ConsignorReportsActive}">
+            <StackPanel>
+              <TextBlock>Consignor Sales Reports</TextBlock>
+              <PathIcon Data="{StaticResource person_feedback_regular}" />
+            </StackPanel>
+          </Button>
+          <Button Command="{Binding CompanySettings}"
+                  Classes.accent="{Binding SettingsActive}">
+            <StackPanel>
+              <TextBlock> Company Settings</TextBlock>
+              <PathIcon Data="{StaticResource settings_regular}" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      
+       </DockPanel>
+      </Border>
+
+    <SplitView DisplayMode="CompactInline"
+               PanePlacement="Right"
+               OpenPaneLength="{Binding StatusPane.ExpandedWidth}"
+               CompactPaneLength="{Binding StatusPane.CollapsedWidth}"
+               IsPaneOpen="{Binding StatusPane.PaneOpened}">
+
+      <SplitView.Pane>
+        <TransitioningContentControl Content="{Binding StatusPane.CurrentPaneState}" />
+      </SplitView.Pane>
+
+      <TransitioningContentControl Content="{Binding CurrentOperation}" />
+      
+    </SplitView>
+    
+  </DockPanel>
+  
+</UserControl>

@@ -1,0 +1,20 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:GenerationsPOS.ViewModels"
+             x:Class="GenerationsPOS.Views.WelcomeView"
+             x:DataType="vm:WelcomeViewModel">
+
+  <StackPanel VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+    
+    <TextBlock HorizontalAlignment="Center">Welcome to GenerationsPOS!</TextBlock>
+    <Image Margin="20"
+           Height="400"
+           Source="avares://GenerationsPOS/Assets/treelogo.png"/>
+    
+  </StackPanel>
+  
+</UserControl>

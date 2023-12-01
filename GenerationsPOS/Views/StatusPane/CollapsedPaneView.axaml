@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="24" d:DesignHeight="450"
+             xmlns:spvm="clr-namespace:GenerationsPOS.ViewModels.StatusPane"
+             x:Class="GenerationsPOS.Views.StatusPane.CollapsedPaneView"
+             x:DataType="spvm:CollapsedPaneViewModel">
+
+  <Panel Width="{Binding StatusPane.CollapsedWidth}"
+         Name="Pane">
+    
+    <Button VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Margin="2,6"
+            Width="22"
+            Height="22"
+            Command="{Binding StatusPane.OpenNotificationPane}">
+      <PathIcon Data="{StaticResource caret_left_regular}"
+                Height="12"
+                Width="12" />
+    </Button>
+    
+  </Panel>
+  
+</UserControl>
