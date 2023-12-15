@@ -3,13 +3,7 @@ using GenerationsPOS.PointOfSale.Accounting;
 using GenerationsPOS.PointOfSale.Hardware;
 using GenerationsPOS.PointOfSale.Hardware.Metrics;
 using GenerationsPOS.PointOfSale.Invoices;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace GenerationsPOS.PointOfSale
 {

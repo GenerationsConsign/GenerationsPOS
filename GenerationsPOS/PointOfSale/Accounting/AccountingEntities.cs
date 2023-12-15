@@ -1,11 +1,4 @@
-﻿using Interop.QBFC16;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenerationsPOS.PointOfSale.Accounting
+﻿namespace GenerationsPOS.PointOfSale.Accounting
 {
     public record struct QBObject(string Id, string Name);
 

@@ -1,13 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Windows.Input;
-using GenerationsPOS.ViewModels;
 using GenerationsPOS.PointOfSale;
-using System.Threading;
-using GenerationsPOS.Views.StatusPane;
 using GenerationsPOS.ViewModels.StatusPane;
 using System.IO;
-using GenerationsPOS.Views;
 
 namespace GenerationsPOS.ViewModels;
 

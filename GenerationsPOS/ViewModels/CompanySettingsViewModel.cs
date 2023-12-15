@@ -1,16 +1,10 @@
-﻿using Avalonia.Controls.Primitives;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using GenerationsPOS.Data;
 using GenerationsPOS.PointOfSale;
-using Microsoft.CodeAnalysis.FlowAnalysis;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenerationsPOS.ViewModels
 {

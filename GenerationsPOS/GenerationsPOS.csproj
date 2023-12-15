@@ -37,7 +37,6 @@
 
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="DebounceThrottle" Version="2.0.0" />
     <PackageReference Include="ESCPOS_NET" Version="3.0.0" />
     <PackageReference Include="Interop.QBFC16" Version="16.0.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">

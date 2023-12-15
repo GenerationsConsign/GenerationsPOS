@@ -2,14 +2,10 @@
 using GenerationsPOS.PointOfSale.Invoices;
 using GenerationsPOS.QuickBooks;
 using Interop.QBFC16;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NLog;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenerationsPOS.PointOfSale.Accounting
 {

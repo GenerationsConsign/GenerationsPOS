@@ -1,21 +1,13 @@
-﻿using Avalonia.Controls;
-using ESCPOS_NET;
+﻿using ESCPOS_NET;
 using ESCPOS_NET.Emitters;
-using ESCPOS_NET.Emitters.BaseCommandValues;
 using ESCPOS_NET.Utilities;
 using GenerationsPOS.Data;
 using GenerationsPOS.PointOfSale.Hardware.Metrics;
 using GenerationsPOS.PointOfSale.Invoices;
-using Interop.QBFC16;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Extensions.Logging;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenerationsPOS.PointOfSale.Hardware
 {

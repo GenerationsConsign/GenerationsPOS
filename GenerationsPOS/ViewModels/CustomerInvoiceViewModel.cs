@@ -1,16 +1,8 @@
-﻿using Avalonia.Controls;
-using Avalonia.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using GenerationsPOS.PointOfSale;
 using GenerationsPOS.PointOfSale.Invoices;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GenerationsPOS.ViewModels

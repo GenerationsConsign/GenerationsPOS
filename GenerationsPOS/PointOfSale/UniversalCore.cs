@@ -1,14 +1,7 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
+﻿using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Styling;
 using GenerationsPOS.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static GenerationsPOS.Data.CompanySettings;
 
 namespace GenerationsPOS.PointOfSale
 {

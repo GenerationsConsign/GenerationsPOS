@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using ESCPOS_NET.Emitters.BaseCommandValues;
-using GenerationsPOS.Data;
+﻿using GenerationsPOS.Data;
 using GenerationsPOS.PointOfSale.Accounting;
 using GenerationsPOS.PointOfSale.Invoices;
 using Interop.QBFC16;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using NLog;
-using SimpleTcp;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace GenerationsPOS.QuickBooks
 {

@@ -1,13 +1,7 @@
-﻿using Avalonia.Collections;
-using CommunityToolkit.Mvvm.ComponentModel;
-using GenerationsPOS.Data;
+﻿using GenerationsPOS.Data;
 using GenerationsPOS.Utilities;
-using Interop.QBFC16;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenerationsPOS.PointOfSale.Invoices
 {

@@ -1,23 +1,13 @@
-﻿using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using GenerationsPOS.Data;
+﻿using GenerationsPOS.Data;
 using GenerationsPOS.PointOfSale.Accounting;
 using GenerationsPOS.PointOfSale.Hardware;
 using GenerationsPOS.PointOfSale.Hardware.Metrics;
 using GenerationsPOS.PointOfSale.Invoices;
-using GenerationsPOS.QuickBooks;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using NLog;
-using NLog.LayoutRenderers;
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace GenerationsPOS.PointOfSale

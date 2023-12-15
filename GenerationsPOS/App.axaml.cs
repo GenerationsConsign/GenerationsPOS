@@ -2,12 +2,10 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using Avalonia.Styling;
 using GenerationsPOS.Data;
 using GenerationsPOS.PointOfSale;
 using GenerationsPOS.ViewModels;
 using GenerationsPOS.Views;
-using System;
 
 namespace GenerationsPOS;
 

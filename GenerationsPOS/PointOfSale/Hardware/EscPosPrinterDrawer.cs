@@ -1,12 +1,4 @@
-﻿using ESCPOS_NET;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenerationsPOS.PointOfSale.Hardware
+﻿namespace GenerationsPOS.PointOfSale.Hardware
 {
     internal class EscPosPrinterDrawer : ICashDrawer
     {

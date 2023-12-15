@@ -1,14 +1,5 @@
-﻿using Avalonia.Controls.Documents;
-using CommunityToolkit.Mvvm.ComponentModel;
-using GenerationsPOS.PointOfSale;
+﻿using GenerationsPOS.PointOfSale;
 using GenerationsPOS.PointOfSale.Hardware.Metrics;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenerationsPOS.ViewModels.StatusPane
 {
