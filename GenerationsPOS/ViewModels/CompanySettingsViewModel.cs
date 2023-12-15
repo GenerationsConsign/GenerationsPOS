@@ -38,6 +38,7 @@ namespace GenerationsPOS.ViewModels
             ConsCredit = cfg.ConsignorCreditPaymentType;
             PurchasesAccount = cfg.PurchaseAccount;
             AssetAccount = cfg.AssetAccount;
+            IncomeAccount = cfg.IncomeAccount;
 
             Name = cfg.Name;
             CompanyFullName = cfg.CompanyName;
@@ -66,6 +67,8 @@ namespace GenerationsPOS.ViewModels
         public string PurchasesAccount { get; set; }
 
         public string AssetAccount { get; set; }
+
+        public string IncomeAccount { get; set; }
 
         private bool QuickBooksSessionActive => Generations.AccountingIntegration?.IsConnected == true;
 
@@ -203,6 +206,7 @@ namespace GenerationsPOS.ViewModels
             cfg.ConsignorCreditPaymentType = ConsCredit;
             cfg.PurchaseAccount = PurchasesAccount;
             cfg.AssetAccount = AssetAccount;
+            cfg.IncomeAccount = IncomeAccount;
 
             cfg.CompanyName = CompanyFullName;
             cfg.Header = ReceiptHeader;

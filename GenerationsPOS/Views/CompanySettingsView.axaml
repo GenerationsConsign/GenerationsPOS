@@ -108,6 +108,9 @@
             
             <TextBlock>Purchase COGS Account</TextBlock>
             <TextBox Text="{Binding PurchasesAccount}" />
+
+            <TextBlock>Income Account</TextBlock>
+            <TextBox Text="{Binding IncomeAccount}" />
             
             <TextBlock>Inventory Asset Account</TextBlock>
             <TextBox Text="{Binding AssetAccount}" />

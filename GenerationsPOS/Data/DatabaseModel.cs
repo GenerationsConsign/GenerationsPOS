@@ -58,7 +58,8 @@ namespace GenerationsPOS.Data
         public string CheckPaymentType { get; set; } = "CHECK";
         public string ConsignorCreditPaymentType { get; set; } = "CONS $";
         public string PurchaseAccount { get; set; } = "Purchases - Consignment";
-        public string AssetAccount { get; set; } = "Sales - Consignment";
+        public string AssetAccount { get; set; } = "Inventory Asset";
+        public string IncomeAccount { get; set; } = "Sales - Consignment";
         public int UserTheme { get; set; } = 1;
         public int COMPort { get; set; } = 8;
 

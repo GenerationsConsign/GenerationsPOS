@@ -93,7 +93,7 @@ namespace GenerationsPOS.QuickBooks
             {
                 AssetAccount = CompanySettings.AssetAccount,
                 PurchasesAccount = CompanySettings.PurchaseAccount, 
-                IncomeAccount = CompanySettings.AssetAccount // TODO determine required value
+                IncomeAccount = CompanySettings.IncomeAccount
             };
 
             QBPaymentMethods = QueryPaymentMethods();

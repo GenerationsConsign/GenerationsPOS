@@ -33,6 +33,6 @@ namespace GenerationsPOS.PointOfSale
         
         public SystemStatus Status { get; }
 
-        public IAccounting? AccountingIntegration { get; }
+        public IAccounting AccountingIntegration { get; }
     }
 }

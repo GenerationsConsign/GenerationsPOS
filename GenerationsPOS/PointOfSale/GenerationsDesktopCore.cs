@@ -57,7 +57,7 @@ namespace GenerationsPOS.PointOfSale
                     .AddJsonFile(LocationFile)
                     .Build();
 
-                DataRoot = storageConfiguration["StorageRoot"]!;
+                DataRoot = storageConfiguration["StorageRoot"] ?? "";
             }
             catch (Exception ex)
             {
@@ -110,11 +110,12 @@ namespace GenerationsPOS.PointOfSale
 
             // Init QuickBooks integration
             QuickBooksDesktop? qb = null;
+            
             try
             {
                 qb = new QuickBooksDesktop(config);
                 var qbConnect = Task.Run(() => qb.Connect());
-                if (!qbConnect.Wait(TimeSpan.FromSeconds(2)))
+                if (!qbConnect.Wait(TimeSpan.FromSeconds(60)))
                 {
                     throw new TimeoutException("Timed out connecting to QuickBooks");
                 }
@@ -141,10 +142,17 @@ namespace GenerationsPOS.PointOfSale
                     }
                 });
             }
-            AccountingIntegration = qb;
+            if (qb != null)
+            {
+                AccountingIntegration = qb;
 
-            // Create application shutdown hook to ensure QB session ends (QB will be prevented from closing if sessions are not closed)
-            util.AddShutdownHook(() => qb?.Disconnect());
+                // Create application shutdown hook to ensure QB session ends (QB will be prevented from closing if sessions are not closed)
+                util.AddShutdownHook(() => qb?.Disconnect());
+            }
+            else
+            {
+                AccountingIntegration = new LocalAccounting();
+            }
         }
     }
 }
